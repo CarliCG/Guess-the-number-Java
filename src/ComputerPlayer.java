@@ -5,6 +5,7 @@ public class ComputerPlayer extends Player {
         super(name);
     }
 
+
     @Override
     public int guessNumber() {
         Random random = new Random();

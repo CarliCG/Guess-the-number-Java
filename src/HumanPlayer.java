@@ -9,7 +9,7 @@ public class HumanPlayer extends Player {
 
     public int guessNumber() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print(name + ", ingresa un número: ");
+        System.out.print("Hola " + name + ", ingresa un número: ");
         return scanner.nextInt();
     }
 }
