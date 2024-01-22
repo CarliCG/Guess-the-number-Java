@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -13,7 +15,7 @@ public class Main {
         HumanPlayer humanPlayer = new HumanPlayer(nombreJugadora) {
             @Override
             public int guessNumber() {
-                return 0;
+                return scanner.nextInt();
             }
         };
         ComputerPlayer computerPlayer = new ComputerPlayer("Ordenador");
@@ -24,16 +26,22 @@ public class Main {
         int intentosJugadora = 0;  // Variable para contar los intentos de la jugadora
         int intentosComputador = 0; // Variable para contar intentos del computador
 
+        // Lista para almacenar los intentos de la jugadora
+        List<Integer> intentosJugadoraLista = new ArrayList<>();
+
         // Bucle que continuará hasta que el juego esté terminado
         while (true) {
             // Turno de la jugadora
-            System.out.println("\n--- Turno de " + nombreJugadora + " ---");
+            System.out.println("\n--- Turno de " + humanPlayer.getName() + " ---");
             int numeroJugadora = humanPlayer.makeGuess();
+            intentosJugadoraLista.add(numeroJugadora);  // Agregar el intento a la lista
             intentosJugadora++;  // Incrementar el contador de intentos
-            System.out.println(nombreJugadora + " escribió: " + numeroJugadora);
+            System.out.println(humanPlayer.getName() + " escribió: " + numeroJugadora);
 
             if (numeroJugadora == numeroAdivinar) {
                 System.out.println("¡Felicidades! Has adivinado el número en " + intentosJugadora + " intentos.");
+                // Imprimir los intentos de la jugadora después de la felicitación
+                System.out.println("\nIntentos de " + humanPlayer.getName() + ": " + intentosJugadoraLista);
                 juegoTerminado = true;
             } else if (numeroJugadora < numeroAdivinar) {
                 System.out.println("No es el número correcto. Intenta con uno más alto.");
@@ -66,6 +74,8 @@ public class Main {
                 break;
             }
         }
+
+
 
         scanner.close();
     }
