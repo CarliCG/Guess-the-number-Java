@@ -9,7 +9,7 @@ public class ComputerPlayer extends Player {
     @Override
     public int guessNumber() {
         Random random = new Random();
-        System.out.println(name + " está ingresando un número...");
+
         return random.nextInt(10) + 1;
     }
 }
